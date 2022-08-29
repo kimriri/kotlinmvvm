@@ -35,10 +35,14 @@ class SubFragment() : Fragment(R.layout.sub_fragment) {
         return view
     }
 
+    override fun onStart() {
+        super.onStart()
+          val nNumber = myNumberViewModel.currenValue.value
+        _binding?.fragmentNumberTextView?.text = nNumber.toString()
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        val nNumber = myNumberViewModel.currenValue.value
-        _binding?.fragmentNumberTextView?.text = nNumber.toString()
     }
 
     override fun onDestroyView() {

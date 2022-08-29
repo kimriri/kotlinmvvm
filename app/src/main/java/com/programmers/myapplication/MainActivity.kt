@@ -42,13 +42,5 @@ class MainActivity : AppCompatActivity() {
                 replace<SubFragment>(R.id.fragment_container_view)
             }
         }
-
-
-        binding.goFragmentBtn.setOnClickListener {
-            supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                replace<SubFragment>(R.id.fragment_container_view)
-            }
-        }
     }
 }
