@@ -1,12 +1,9 @@
 package com.programmers.myapplication
 
-import android.app.PendingIntent.getActivity
-import android.content.Intent
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
@@ -16,15 +13,15 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val TAG: String = "LOG"
+        private lateinit var myNumberViewModel: MyNumberViewModel
     }
-    private lateinit var myNumberViewModel: MyNumberViewModel
 
+    @SuppressLint("LogConditional")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
+         val binding = ActivityMainBinding.inflate(layoutInflater)
+         val view = binding.root
         setContentView(view)
-
         myNumberViewModel = ViewModelProvider(this)[MyNumberViewModel::class.java]
         myNumberViewModel.currenValue.observe(this) {
             Log.d(TAG, "MainActivityValue : $it")
@@ -32,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.plusBtn.setOnClickListener{
-            myNumberViewModel.updateValue(ActionType.PULS,binding.userInputEdittext.text.toString().toInt())}
+            myNumberViewModel.updateValue(ActionType.PULS,editTextDefault(binding = binding))}
         binding.minusBtn.setOnClickListener{
-            myNumberViewModel.updateValue(ActionType.MINUS,binding.userInputEdittext.text.toString().toInt())}
+            myNumberViewModel.updateValue(ActionType.MINUS,editTextDefault(binding = binding))}
 
         binding.goFragmentBtn.setOnClickListener {
             supportFragmentManager.commit {
@@ -42,5 +39,13 @@ class MainActivity : AppCompatActivity() {
                 replace<SubFragment>(R.id.fragment_container_view)
             }
         }
+    }
+
+    private fun editTextDefault(binding: ActivityMainBinding): Int {
+        when {
+            binding.userInputEdittext.text.toString() == "" ->
+                binding.userInputEdittext.setText(DefaultInternalObject.StrZero)
+        }
+            return binding.userInputEdittext.text.toString().toInt()
     }
 }

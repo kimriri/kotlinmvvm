@@ -10,10 +10,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 
-enum class ActionType {
-    PULS,
-    MINUS
-}
 
 class MyNumberViewModel() : ViewModel() {
 
@@ -25,8 +21,7 @@ class MyNumberViewModel() : ViewModel() {
 
     val currenValue: LiveData<Int>
         get() = _currenValue
-
-
+    
     init {
         Log.d(TAG, "MyNumberViewModel")
         _currenValue.value = 0
