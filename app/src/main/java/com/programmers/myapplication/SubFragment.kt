@@ -37,8 +37,8 @@ class SubFragment() : Fragment(R.layout.sub_fragment) {
 
     override fun onStart() {
         super.onStart()
-          val nNumber = myNumberViewModel.currenValue.value
-        _binding?.fragmentNumberTextView?.text = nNumber.toString()
+//          val nNumber = myNumberViewModel.currenValue.value
+//        _binding?.fragmentNumberTextView?.text = nNumber.toString()
     }
 
     override fun onAttach(context: Context) {

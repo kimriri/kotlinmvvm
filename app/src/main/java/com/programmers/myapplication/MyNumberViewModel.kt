@@ -27,12 +27,13 @@ class MyNumberViewModel() : ViewModel() {
         _currenValue.value = 0
     }
 
-    fun updateValue(actionType: ActionType, input: Int) {
+    fun updateValue(actionType: ActionType, input: String) {
+        val inputNumber = input.toIntOrNull() ?: 0
         when (actionType) {
             ActionType.PULS ->
-                _currenValue.value = _currenValue.value?.plus(input)
+                _currenValue.value = _currenValue.value?.plus(inputNumber)
             ActionType.MINUS ->
-                _currenValue.value = _currenValue.value?.minus(input)
+                _currenValue.value = _currenValue.value?.minus(inputNumber)
         }
     }
 }

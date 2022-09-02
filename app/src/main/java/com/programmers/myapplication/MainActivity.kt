@@ -23,13 +23,14 @@ class MainActivity : AppCompatActivity() {
          val view = binding.root
         setContentView(view)
         myNumberViewModel = ViewModelProvider(this)[MyNumberViewModel::class.java]
+        binding.viewModel = myNumberViewModel
         myNumberViewModel.currenValue.observe(this) {
             Log.d(TAG, "MainActivityValue : $it")
             binding.numberTextView.text = it.toString()
         }
 
-        binding.plusBtn.setOnClickListener{
-            myNumberViewModel.updateValue(ActionType.PULS,editTextDefault(binding = binding))}
+//        binding.plusBtn.setOnClickListener{
+//            myNumberViewModel.updateValue(ActionType.PULS,editTextDefault(binding = binding))}
         binding.minusBtn.setOnClickListener{
             myNumberViewModel.updateValue(ActionType.MINUS,editTextDefault(binding = binding))}
 
@@ -41,11 +42,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun editTextDefault(binding: ActivityMainBinding): Int {
+    private fun editTextDefault(binding: ActivityMainBinding): String {
         when {
-            binding.userInputEdittext.text.toString() == "" ->
+            binding.userInputEdittext.text.isEmpty() ->
                 binding.userInputEdittext.setText(DefaultInternalObject.StrZero)
         }
-            return binding.userInputEdittext.text.toString().toInt()
+            return binding.userInputEdittext.text.toString()
     }
 }
