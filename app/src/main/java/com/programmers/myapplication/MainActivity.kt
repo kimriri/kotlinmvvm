@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
 
 //        binding.plusBtn.setOnClickListener{
 //            myNumberViewModel.updateValue(ActionType.PULS,editTextDefault(binding = binding))}
-        binding.minusBtn.setOnClickListener{
-            myNumberViewModel.updateValue(ActionType.MINUS,editTextDefault(binding = binding))}
+//        binding.minusBtn.setOnClickListener{
+//            myNumberViewModel.updateValue(ActionType.MINUS,editTextDefault(binding = binding))}
 
         binding.goFragmentBtn.setOnClickListener {
             supportFragmentManager.commit {
