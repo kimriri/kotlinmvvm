@@ -7,6 +7,10 @@
         <variable
             name="viewModel"
             type="com.programmers.myapplication.MyNumberViewModel" />
+        <variable
+            name="subFragment"
+            type="com.programmers.myapplication.SubFragment" />
+
         <import type="com.programmers.myapplication.ActionType" />
     </data>
 
@@ -20,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
+            android:text="@{viewModel.setCurrentValue()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/FragmentFrame" />
@@ -29,6 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
+            android:text="123"
             android:inputType="number"
             app:layout_constraintBottom_toBottomOf="@+id/plusBtn"
             app:layout_constraintEnd_toStartOf="@+id/plusBtn"
@@ -79,6 +85,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragment_container_view"

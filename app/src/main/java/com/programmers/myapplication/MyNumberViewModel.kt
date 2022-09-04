@@ -13,18 +13,27 @@ import androidx.lifecycle.ViewModel
 
 class MyNumberViewModel() : ViewModel() {
 
+
+    private val _currenValue = MutableLiveData<Int>()
+
     companion object {
         const val TAG: String = "LOG"
     }
-
-    private val _currenValue = MutableLiveData<Int>()
 
     val currenValue: LiveData<Int>
         get() = _currenValue
     
     init {
         Log.d(TAG, "MyNumberViewModel")
-        _currenValue.value = 0
+        defaultCurrentValue()
+    }
+
+    fun defaultCurrentValue() {
+        return if ( _currenValue.value == null) _currenValue.value = DefaultInternalObject.IntZero else _currenValue.value as Unit
+    }
+
+    fun setCurrentValue(): String {
+      return  _currenValue.value.toString()
     }
 
     fun updateValue(actionType: ActionType, input: String) {
@@ -34,6 +43,7 @@ class MyNumberViewModel() : ViewModel() {
                 _currenValue.value = _currenValue.value?.plus(inputNumber)
             ActionType.MINUS ->
                 _currenValue.value = _currenValue.value?.minus(inputNumber)
+
         }
     }
 }

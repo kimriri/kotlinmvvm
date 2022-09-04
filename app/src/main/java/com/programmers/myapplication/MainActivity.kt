@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.programmers.myapplication.databinding.ActivityMainBinding
 
@@ -26,13 +27,12 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = myNumberViewModel
 
         myNumberViewModel.currenValue.observe(this) {
-            Log.d(TAG, "MainActivityValue : $it")
             binding.numberTextView.text = it.toString()
         }
 
         binding.goFragmentBtn.setOnClickListener {
             supportFragmentManager.commit {
-                setReorderingAllowed(true)
+              //  setReorderingAllowed(true)
                 replace<SubFragment>(R.id.fragment_container_view)
             }
         }

@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
 import com.programmers.myapplication.databinding.SubFragmentBinding
 
 class SubFragment() : Fragment(R.layout.sub_fragment) {
 
-    private val myNumberViewModel: MyNumberViewModel by activityViewModels()
+    private lateinit var myNumberViewModel: MyNumberViewModel
 
     companion object {
         const val TAG: String = "LOG"
@@ -31,18 +33,10 @@ class SubFragment() : Fragment(R.layout.sub_fragment) {
         savedInstanceState: Bundle?
     ): View? {
         _binding = SubFragmentBinding.inflate(inflater, container, false)
+        myNumberViewModel = ViewModelProvider(activity as ViewModelStoreOwner)[MyNumberViewModel::class.java]
+        binding.viewModel = myNumberViewModel
         val view = binding.root
         return view
-    }
-
-    override fun onStart() {
-        super.onStart()
-          val nNumber = myNumberViewModel.currenValue.value
-        _binding?.fragmentNumberTextView?.text = nNumber.toString()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
     }
 
     override fun onDestroyView() {
