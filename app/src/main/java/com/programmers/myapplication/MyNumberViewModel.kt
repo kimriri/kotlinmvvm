@@ -1,15 +1,9 @@
 package com.programmers.myapplication
 
-import android.os.Parcel
-import android.os.Parcelable
 import android.util.Log
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
-
 
 class MyNumberViewModel() : ViewModel() {
 
