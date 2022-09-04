@@ -12,19 +12,22 @@ import com.programmers.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var myNumberViewModel: MyNumberViewModel
+
     companion object {
         const val TAG: String = "LOG"
-        private lateinit var myNumberViewModel: MyNumberViewModel
     }
 
     @SuppressLint("LogConditional")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
          val binding = ActivityMainBinding.inflate(layoutInflater)
-         val view = binding.root
-        setContentView(view)
+         val mainActivityView = binding.root
+        setContentView(mainActivityView)
+        Log.d(SubFragment.TAG, "MainActivityView $mainActivityView")
+
         myNumberViewModel = ViewModelProvider(this)[MyNumberViewModel::class.java]
-        binding.viewModel = myNumberViewModel
+        binding.mainActivityViewModel = myNumberViewModel
 
         myNumberViewModel.currenValue.observe(this) {
             binding.numberTextView.text = it.toString()
@@ -32,7 +35,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.goFragmentBtn.setOnClickListener {
             supportFragmentManager.commit {
-              //  setReorderingAllowed(true)
+                // setReorderingAllowed(true) -> 트랙젠션 상태변환 최적화 없어도 실행에 문제는 없다.
+                setReorderingAllowed(true)
                 replace<SubFragment>(R.id.fragment_container_view)
             }
         }

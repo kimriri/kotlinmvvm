@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="viewModel"
+            name="mainActivityViewModel"
             type="com.programmers.myapplication.MyNumberViewModel" />
         <variable
             name="subFragment"
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:text="@{viewModel.setCurrentValue()}"
+            android:text="@{mainActivityViewModel.setCurrentValueStr()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/FragmentFrame" />
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:text="@string/plus"
             android:layout_marginHorizontal="10dp"
-            android:onClick="@{() -> viewModel.updateValue(ActionType.PULS, userInputEdittext.getText().toString())}"
+            android:onClick="@{() -> mainActivityViewModel.updateValue(ActionType.PULS, userInputEdittext.getText().toString())}"
             app:layout_constraintBottom_toBottomOf="@+id/minusBtn"
             app:layout_constraintEnd_toEndOf="@+id/numberTextView"
             app:layout_constraintEnd_toStartOf="@+id/minusBtn"
@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/minus"
-            android:onClick="@{() -> viewModel.updateValue(ActionType.MINUS, userInputEdittext.getText().toString())}"
+            android:onClick="@{() -> mainActivityViewModel.updateValue(ActionType.MINUS, userInputEdittext.getText().toString())}"
             android:layout_marginHorizontal="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
