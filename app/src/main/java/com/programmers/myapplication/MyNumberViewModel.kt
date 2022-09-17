@@ -35,26 +35,24 @@ class MyNumberViewModel() : ViewModel() {
       return  _currenValue.value?.toString() ?: DefaultInternalObject.StrZero
     }
 
-    // cStrValue의 값을 Int 형태로 return
-     fun setcStr(): String{
-        return _cStrValue.value?.toString() ?: DefaultInternalObject.StrZero
-    }
 
     // CurrentValue의 값을 Int 형태로 return
-    fun setStr(): Int {
+    fun CurrentValue(): Int {
         return _currenValue.value?.toInt() ?: DefaultInternalObject.IntZero
     }
 
-     fun updateValue(actionType: ActionType, input: String) {
-        val inputNumber = input.toIntOrNull() ?: 0
+    // cStrValue의 값을 Int 형태로 return
+    fun setcStr(): String{
+        return _cStrValue.value?.toString() ?: MainJNI().setStringFromJNI()
+    }
+
+    fun updateValue(actionType: ActionType, input: String) {
+         val inputNumber = input.toIntOrNull() ?: 0
         when (actionType) {
             ActionType.PULS ->
                 _currenValue.value = _currenValue.value?.plus(inputNumber)
             ActionType.MINUS ->
                 _currenValue.value = _currenValue.value?.minus(inputNumber)
-            ActionType.CSTR ->
-                _currenValue.value = _currenValue.value?.minus(inputNumber)
-
 
         }
     }

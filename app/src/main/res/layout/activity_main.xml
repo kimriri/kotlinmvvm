@@ -78,13 +78,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/minusBtn" />
 
-
         <TextView
             android:id="@+id/str_c"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:text=""
+            android:text="@{mainActivityViewModel.setcStr()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/goFragmentBtn" />
 

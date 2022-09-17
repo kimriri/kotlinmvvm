@@ -18,12 +18,15 @@
 //         System.loadLibrary("myapplication")
 //      }
 //    }
+
+
+
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_programmers_myapplication_MainActivity_stringFromJNI(JNIEnv *env, jobject thiz) {
+/**Show String*/
+Java_com_programmers_myapplication_MainJNI_stringFromJNI(JNIEnv *env, jobject thiz) {
     // TODO: implement stringFromJNI()
-
     std::string hello = "Hello from C++";
-
     return env->NewStringUTF(hello.c_str());
+
 }

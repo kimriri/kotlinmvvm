@@ -15,13 +15,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var myNumberViewModel: MyNumberViewModel
 
     companion object {
-        init {
-            System.loadLibrary("native-lib")
-        }
+
         const val TAG: String = "LOG"
     }
-
-    external fun stringFromJNI(): String
 
     @SuppressLint("LogConditional")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,10 +33,6 @@ class MainActivity : AppCompatActivity() {
         myNumberViewModel.currenValue.observe(this) {
             binding.numberTextView.text = it.toString()
         }
-
-        // stringFromJNI
-        binding.strC.text = stringFromJNI()
-
         binding.goFragmentBtn.setOnClickListener {
             supportFragmentManager.commit {
                 // setReorderingAllowed(true) -> 트랙젠션 상태변환 최적화 없어도 실행에 문제는 없다.
