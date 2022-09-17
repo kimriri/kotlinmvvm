@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
+import androidx.startup.StartupException
 import com.programmers.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,8 +15,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var myNumberViewModel: MyNumberViewModel
 
     companion object {
+        init {
+            System.loadLibrary("native-lib")
+        }
         const val TAG: String = "LOG"
     }
+
+    external fun stringFromJNI(): String
 
     @SuppressLint("LogConditional")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +37,9 @@ class MainActivity : AppCompatActivity() {
         myNumberViewModel.currenValue.observe(this) {
             binding.numberTextView.text = it.toString()
         }
+
+        // stringFromJNI
+        binding.strC.text = stringFromJNI()
 
         binding.goFragmentBtn.setOnClickListener {
             supportFragmentManager.commit {

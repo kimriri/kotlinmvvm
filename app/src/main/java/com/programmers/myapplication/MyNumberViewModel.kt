@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 class MyNumberViewModel() : ViewModel() {
 
     private val _currenValue = MutableLiveData<Int>()
+    private val _cStrValue = MutableLiveData<String>()
 
     companion object {
         const val TAG: String = "LOG"
@@ -15,6 +16,9 @@ class MyNumberViewModel() : ViewModel() {
 
     val currenValue: LiveData<Int>
         get() = _currenValue
+
+    val cStrValue: LiveData<String>
+        get() = _cStrValue
     
     init {
         Log.d(TAG, "MyNumberViewModel")
@@ -31,8 +35,13 @@ class MyNumberViewModel() : ViewModel() {
       return  _currenValue.value?.toString() ?: DefaultInternalObject.StrZero
     }
 
+    // cStrValue의 값을 Int 형태로 return
+     fun setcStr(): String{
+        return _cStrValue.value?.toString() ?: DefaultInternalObject.StrZero
+    }
+
     // CurrentValue의 값을 Int 형태로 return
-     fun setCurrentValueInt(): Int {
+    fun setStr(): Int {
         return _currenValue.value?.toInt() ?: DefaultInternalObject.IntZero
     }
 
@@ -43,7 +52,11 @@ class MyNumberViewModel() : ViewModel() {
                 _currenValue.value = _currenValue.value?.plus(inputNumber)
             ActionType.MINUS ->
                 _currenValue.value = _currenValue.value?.minus(inputNumber)
+            ActionType.CSTR ->
+                _currenValue.value = _currenValue.value?.minus(inputNumber)
+
 
         }
     }
+
 }
