@@ -42,17 +42,29 @@ extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_programmers_myapplication_MainJNI_getLineFromJNI(JNIEnv *env, jobject thiz,jstring prompt,jint value) {
     // TODO: implement getLineFromJNI()
+    /**
+     * 메모리는 할당하면 반드시 해제 하여야 한다.
+     * GetStringUTFChars : 새로운 메모리 할당
+     * ReleaseStringUTFChars : 할당된 메모리 해제
+     * */
 
     const char *str = env->GetStringUTFChars(prompt,NULL);
-    int getNumber = value * 0.8;
+    const int getNumber = value;
+    char *buf = "안녕하세요.";
     if(str == NULL) {
         return NULL;
     }
     __android_log_print(ANDROID_LOG_INFO,"App Debug", "%s(%d) ", str, getNumber);
     env->ReleaseStringUTFChars(prompt,str);
 
-    const char *buf = "안녕하세요.";
-
+    if (getNumber == 0) {
+        buf = "안녕하세요.";
+    }
+    else if (getNumber == 1) {
+        buf = "어서오세요.";
+    }
+    else {
+        buf = "안녕히가세요.";
+    }
     return env->NewStringUTF(buf);
-
 }
