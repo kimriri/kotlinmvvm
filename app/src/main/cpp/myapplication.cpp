@@ -68,3 +68,12 @@ Java_com_programmers_myapplication_MainJNI_getLineFromJNI(JNIEnv *env, jobject t
     }
     return env->NewStringUTF(buf);
 }
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_programmers_myapplication_MainJNI_charFromJNI(JNIEnv *env, jobject thiz) {
+    // TODO: implement charFromJNI()
+    char strBuff[128] = "Hello from JNI";
+
+    return env->NewStringUTF(strBuff);
+}
