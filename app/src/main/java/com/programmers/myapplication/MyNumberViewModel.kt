@@ -43,7 +43,12 @@ class MyNumberViewModel() : ViewModel() {
 
     // cStrValue의 값을 Int 형태로 return
     fun setcStr(): String{
-        return _cStrValue.value?.toString() ?: MainJNI().setStringFromJNI()
+        return _cStrValue.value?.toString() ?: MainJNI().stringFromJNI()
+    }
+
+    // cStrValue의 값을 Int 형태로 return
+    fun setcStrchangeUTF(): String{
+        return _cStrValue.value?.toString() ?: MainJNI().getLineFromJNI("입력값",2000)
     }
 
     fun updateValue(actionType: ActionType, input: String) {
