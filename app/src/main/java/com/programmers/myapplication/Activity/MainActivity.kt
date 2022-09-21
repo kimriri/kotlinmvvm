@@ -1,4 +1,4 @@
-package com.programmers.myapplication
+package com.programmers.myapplication.Activity
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,9 @@ import android.util.Log
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
-import androidx.startup.StartupException
+import com.programmers.myapplication.MyNumberViewModel
+import com.programmers.myapplication.R
+import com.programmers.myapplication.SubFragment
 import com.programmers.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

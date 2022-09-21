@@ -1,4 +1,4 @@
-package com.programmers.myapplication
+package com.programmers.myapplication.Object
 
 internal object DefaultInternalObject {
     const val StrZero: String = "0"

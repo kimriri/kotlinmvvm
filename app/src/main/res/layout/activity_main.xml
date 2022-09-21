@@ -7,6 +7,9 @@
         <variable
             name="mainActivityViewModel"
             type="com.programmers.myapplication.MyNumberViewModel" />
+
+
+
         <variable
             name="subFragment"
             type="com.programmers.myapplication.SubFragment" />
@@ -17,7 +20,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".Activity.MainActivity">
 
         <TextView
             android:id="@+id/numberTextView"

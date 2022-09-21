@@ -25,7 +25,7 @@
 extern "C"
 JNIEXPORT jstring JNICALL
 /**Show String*/
-Java_com_programmers_myapplication_MainJNI_stringFromJNI(JNIEnv *env, jobject thiz) {
+Java_com_programmers_myapplication_JIN_MainJNI_stringFromJNI(JNIEnv *env, jobject thiz) {
     // TODO: implement stringFromJNI()
     std::string hello = "Hello from C++";
     std::string hello2 = "NO VALUE";
@@ -40,7 +40,7 @@ Java_com_programmers_myapplication_MainJNI_stringFromJNI(JNIEnv *env, jobject th
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_programmers_myapplication_MainJNI_getLineFromJNI(JNIEnv *env, jobject thiz,jstring prompt,jint value) {
+Java_com_programmers_myapplication_JIN_MainJNI_getLineFromJNI(JNIEnv *env, jobject thiz,jstring prompt,jint value) {
     // TODO: implement getLineFromJNI()
     /**
      * 메모리는 할당하면 반드시 해제 하여야 한다.
@@ -71,7 +71,7 @@ Java_com_programmers_myapplication_MainJNI_getLineFromJNI(JNIEnv *env, jobject t
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_programmers_myapplication_MainJNI_charFromJNI(JNIEnv *env, jobject thiz) {
+Java_com_programmers_myapplication_JIN_MainJNI_charFromJNI(JNIEnv *env, jobject thiz) {
     // TODO: implement charFromJNI()
     char strBuff[128] = "Hello from JNI";
 

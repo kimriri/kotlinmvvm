@@ -1,4 +1,4 @@
-package com.programmers.myapplication
+package com.programmers.myapplication.JIN
 
 class MainJNI {
 

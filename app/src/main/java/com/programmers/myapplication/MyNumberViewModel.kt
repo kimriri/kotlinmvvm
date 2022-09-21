@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.programmers.myapplication.JIN.MainJNI
+import com.programmers.myapplication.Object.DefaultInternalObject
 
 class MyNumberViewModel() : ViewModel() {
 
@@ -27,7 +29,8 @@ class MyNumberViewModel() : ViewModel() {
 
     // defaultCurrentValue 는 DefaultInternalObject 로 변경할 수 있다.
     private fun defaultCurrentValue() {
-        return if ( _currenValue.value == null) _currenValue.value = DefaultInternalObject.IntZero else _currenValue.value as Unit
+        return if ( _currenValue.value == null) _currenValue.value =
+            DefaultInternalObject.IntZero else _currenValue.value as Unit
     }
 
     // CurrentValue의 값을 String 형태로 return
